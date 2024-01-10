@@ -10,7 +10,7 @@ function ProductDetails() {
       .then((res) => res.json())
       .then((res) => {
         setProduct(res);
-        console.log(res);
+        //console.log(res);
       })
       .catch((error) => {
         console.log(error);
@@ -18,22 +18,24 @@ function ProductDetails() {
   }, []);
   return (
     <>
-      <h1>ProductDetails</h1>
+      <div>
+        <h1>ProductDetails</h1>
+      </div>
       {product ? (
-        <div style={{ padding: "20px" }}>
+        <div style={{ padding: "20px", display: "flex" }}>
           <img
             style={{ height: 300, width: 400 }}
             src={product.thumbnail}
             alt={product.title}
           />
-          <div>
+          <div style={{ padding: "20px" }}>
             <h3>{product.title}</h3>
-          </div>
-          <div>
             <h3>${product.price}</h3>
+            <div style={{ marginTop: "110px" }}>
+              <h3>Description :</h3>
+              {product.description}
+            </div>
           </div>
-
-          <p>{product.description}</p>
         </div>
       ) : (
         <p>loadding....</p>
